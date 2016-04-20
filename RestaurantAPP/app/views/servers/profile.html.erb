@@ -1,0 +1,9 @@
+<h1><%= @server.name %></h1>
+
+<% @tables.each do |t| %>
+<% customers = @customers.where table_id: t.id%>
+<h5>Table: <%= t.id %></h5>
+  <% customers.each do |c| %>
+  <%= c.name %>
+  <% end %>
+<% end %>
