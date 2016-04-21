@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  include SessionsHelper
+  # include SessionsHelper
   before_action :authenticate!, only: [:profile]
 
   def new

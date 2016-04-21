@@ -14,6 +14,7 @@ class TablesController < ApplicationController
   def show
     @table = Table.find params[:id]
     @customers = Customer.where table_id: @table.id
+    @session = session[:table_id]
   end
 
   private

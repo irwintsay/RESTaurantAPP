@@ -1,6 +1,15 @@
 <div class="row">
   <div class="col s12 center">
     <h2>Table <%= @table.id %></h2>
+    <h4><%= @session %></h4>
+    <!-- Test Code -->
+
+    <%= form_tag  '/customers', method: :post do %>
+      <%= hidden_field_tag :table_id, @table.id  %>
+      <%= submit_tag 'Add Customer' %>
+    <% end %>
+
+    <!-- End of Test Code -->
     <% @customers.each do |customer| %>
     <a class="black-text" href="/customers/<%= customer.id %>">
     <div class="card">

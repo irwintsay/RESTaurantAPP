@@ -20,4 +20,15 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def createtable
+    table_id = params[:table_id]
+    session[:table_id] = table_id
+    redirect_to '/tables/2'
+  end
+
+  def destroytable
+    session[:table_id] = nil
+    redirect_to profile_path
+  end
+
 end # End of SessionsController
