@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419211343) do
+ActiveRecord::Schema.define(version: 20160421054352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "table_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                       null: false
+    t.integer  "table_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "seated",     default: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -38,7 +39,14 @@ ActiveRecord::Schema.define(version: 20160419211343) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "servers", force: :cascade do |t|
+  create_table "tables", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "paid",       default: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string   "name",            null: false
     t.string   "username",        null: false
     t.string   "password_digest", null: false
@@ -46,14 +54,8 @@ ActiveRecord::Schema.define(version: 20160419211343) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "tables", force: :cascade do |t|
-    t.integer  "server_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "customers", "tables"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "items"
-  add_foreign_key "tables", "servers"
+  add_foreign_key "tables", "users"
 end

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col s12 center">
+    <h2>Create Account</h2>
+    <%= form_for @server do |f| %>
+    <div class="row">
+      <div class="col s12 m6 offset-m3 l4 offset-l4">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="col s12 m6 offset-m3 l4 offset-l4">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+      <div class="col s12 m6 offset-m3 l4 offset-l4">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="col s12 m6 offset-m3 l4 offset-l4">
+        <%= f.submit 'Create Account' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

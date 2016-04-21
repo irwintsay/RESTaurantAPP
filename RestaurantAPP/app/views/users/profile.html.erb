@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col s12 center">
+    <h2>Hi, <%= @user.name %></h2>
+
+    <form class="" action="/tables" method="post">
+      <!-- <input type="hidden" name="table[user_id]" value="<%= @user.id %>"> -->
+      <button type="submit" name="name" value="">Add Table</button>
+    </form>
+
+    <% @tables.each do |t| %>
+    <% customers = @customers.where table_id: t.id%>
+    <div class="row">
+      <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <a class="black-text" href="/tables/<%= t.id %>">
+        <div class="card">
+          <div class="card-content">
+            <h4>Table <%= t.id %></h4>
+            <ul>
+              <% customers.each do |c| %>
+              <li><%= c.name %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
