@@ -11,6 +11,7 @@
       <div class="col s6 m6 l6">
         <h4>Open Tables:</h4>
         <% @empty_tables.each do |et| %>
+        <!-- TEST CODE -->
           <a class="black-text" href="/tables/<%= et.id %>">
           <div class="card">
             <div class="card-content hoverable">
@@ -28,8 +29,8 @@
         <% customers = @customers.where table_id: t.id%>
           <a class="black-text" href="/tables/<%= t.id %>">
           <div class="card">
-            <div class="card-content hoverable">
-              <h4>Table <span class="red-text text-darken-1 border-box"><%= t.id %></span></h4>
+            <div class="red lighten-2 card-content hoverable">
+              <h4>Table <span class="white-text border-box"><%= t.id %></span></h4>
               <ul>
                 <% customers.each do |c| %>
                 <li><%= c.name %></li>
@@ -42,6 +43,6 @@
       </div>
     <!-- End of Render Tables -->
     </div>
-    
+
   </div>
 </div>

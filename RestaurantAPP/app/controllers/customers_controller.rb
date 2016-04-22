@@ -4,6 +4,8 @@ class CustomersController < ApplicationController
 
   def create
     customer = Customer.create({name: Faker::Name.name, table_id: customer_params[:table_id]})
+    table = Table.find customer.table_id
+    table.update occupied: true
     redirect_to table_path(customer.table_id)
   end
 

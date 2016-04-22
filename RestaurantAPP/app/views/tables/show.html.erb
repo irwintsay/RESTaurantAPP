@@ -24,7 +24,7 @@
     <!-- Receipt MODAL -->
     <div id="modal-receipt">
       <% @customers.each do |customer| %>
-        <h5 class="left-align white-text"><%= customer.name %></h5>
+        <h6 class="left-align white-text"><%= customer.name %></h6>
         <% orders = Order.where customer_id: customer.id %>
         <ul class="left-align">
           <% orders.each do |order| %>
@@ -37,7 +37,6 @@
       <h4 class="white-text">Grand Total: <%=number_to_currency(@total_bill) %></h4>
     </div>
     <!-- End of Receipt MODAL -->
-
 
     <% @customers.each do |customer| %>
     <a class="black-text" href="/customers/<%= customer.id %>">

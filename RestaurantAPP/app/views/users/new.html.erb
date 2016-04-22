@@ -3,20 +3,20 @@
     <h2>Create Account</h2>
     <%= form_for @user do |f| %>
     <div class="row">
-      <div class="col s12 m6 offset-m3 l4 offset-l4">
+      <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>
-      <div class="col s12 m6 offset-m3 l4 offset-l4">
+      <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
         <%= f.label :username %>
         <%= f.text_field :username %>
       </div>
-      <div class="col s12 m6 offset-m3 l4 offset-l4">
+      <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
         <%= f.label :password %>
         <%= f.password_field :password %>
       </div>
       <div class="col s12 m6 offset-m3 l4 offset-l4">
-        <%= f.submit 'Create Account' %>
+        <%= f.button 'Create', class: "red darken-1 btn" %>
       </div>
     </div>
     <% end %>
