@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     @tables = Table.where user_id: @user.id
+    @empty_tables = Table.where occupied: false
     @customers = Customer.all
     @new_table = Table.new
   end

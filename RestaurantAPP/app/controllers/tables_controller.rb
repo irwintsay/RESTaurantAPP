@@ -28,7 +28,10 @@ class TablesController < ApplicationController
 
     @tax_bill = (@sub_total * 0.08875).round(2)
     @total_bill = @tax_bill + @sub_total
+  end
 
+  def update
+    
   end
 
   private

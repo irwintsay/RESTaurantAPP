@@ -6,24 +6,42 @@
       <button type="submit" name="name" value="">Add Table</button>
     </form>
 
-    <% @tables.each do |t| %>
-    <% customers = @customers.where table_id: t.id%>
     <div class="row">
-      <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <a class="black-text" href="/tables/<%= t.id %>">
-        <div class="card">
-          <div class="card-content hoverable">
-            <h4>Table <%= t.id %></h4>
-            <ul>
-              <% customers.each do |c| %>
-              <li><%= c.name %></li>
-              <% end %>
-            </ul>
+    <!-- Render Empty Tables -->
+      <div class="col s6 m6 l6">
+        <h4>Open Tables:</h4>
+        <% @empty_tables.each do |et| %>
+          <a class="black-text" href="/tables/<%= et.id %>">
+          <div class="card">
+            <div class="card-content hoverable">
+              <h4>Table <span class="red-text text-darken-1 border-box"><%= et.id %></span></h4>
+            </div>
           </div>
-        </div>
-        </a>
+          </a>
+        <% end %>
       </div>
+    <!-- End of Render Empty Tables  -->
+    <!-- Render Served Tables -->
+      <div class="col s6 m6 l6">
+        <h4>Serving:</h4>
+        <% @tables.each do |t| %>
+        <% customers = @customers.where table_id: t.id%>
+          <a class="black-text" href="/tables/<%= t.id %>">
+          <div class="card">
+            <div class="card-content hoverable">
+              <h4>Table <span class="red-text text-darken-1 border-box"><%= t.id %></span></h4>
+              <ul>
+                <% customers.each do |c| %>
+                <li><%= c.name %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          </a>
+          <% end %>
+      </div>
+    <!-- End of Render Tables -->
     </div>
-    <% end %>
+    
   </div>
 </div>

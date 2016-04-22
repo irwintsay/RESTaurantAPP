@@ -1,16 +1,27 @@
 <div class="row">
   <div class="col s12 center">
-    <h2>Table <span class="red-text text-darken-1"><%= @table.id %></span></h2>
-    <!-- Test Code -->
+    <h2>Table <span class="red-text text-darken-1 border-box"><%= @table.id %></span></h2>
 
-    <%= form_tag  '/customers', method: :post do %>
-      <%= hidden_field_tag :table_id, @table.id  %>
-      <%= submit_tag 'Add Customer' %>
-    <% end %>
+    <!-- Page Navigation Links -->
+    <div class="page-nav row">
+      <div class="col s4 m4 l4">
+        <%= link_to "Back", profile_path, class: "btn-large red darken-1 nav-spacing"%>
+      </div>
 
-    <!-- End of Test Code -->
+      <div class="col s4 m4 l4">
+        <button id="view-receipt" class="btn-large red darken-1 nav-spacing" type="button" name="button">View Receipt</button>
+      </div>
 
-    <button id="view-receipt" class="btn-large red darken-1" type="button" name="button">View Receipt</button>
+      <div class="col s4 m4 l4">
+        <%= form_tag  '/customers', method: :post do %>
+          <%= hidden_field_tag :table_id, @table.id  %>
+          <%= button_tag 'Add Cust', class: 'red darken-1 btn-large nav-spacing' %>
+        <% end %>
+      </div>
+    </div>
+    <!-- End of Page Navigation -->
+
+    <!-- Receipt MODAL -->
     <div id="modal-receipt">
       <% @customers.each do |customer| %>
         <h5 class="left-align white-text"><%= customer.name %></h5>
@@ -25,7 +36,8 @@
       <h5 class="white-text">Sales Tax: <%= number_to_currency(@tax_bill) %></h5>
       <h4 class="white-text">Grand Total: <%=number_to_currency(@total_bill) %></h4>
     </div>
-    <!-- <h2>$<%= @total_bill %></h2> -->
+    <!-- End of Receipt MODAL -->
+
 
     <% @customers.each do |customer| %>
     <a class="black-text" href="/customers/<%= customer.id %>">
