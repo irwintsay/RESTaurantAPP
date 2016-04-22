@@ -14,7 +14,21 @@ class TablesController < ApplicationController
   def show
     @table = Table.find params[:id]
     @customers = Customer.where table_id: @table.id
-    @session = session[:table_id]
+
+    @table_orders = []
+    @sub_total = 0
+
+    @customers.each do |customer|
+      @orders = Order.where customer_id: customer.id
+      @table_orders += @orders
+    end
+    @table_orders.each do |table_order|
+      @sub_total += table_order.item.price
+    end
+
+    @tax_bill = (@sub_total * 0.08875).round(2)
+    @total_bill = @tax_bill + @sub_total
+
   end
 
   private

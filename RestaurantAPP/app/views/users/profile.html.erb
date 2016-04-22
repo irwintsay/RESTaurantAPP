@@ -3,7 +3,6 @@
     <h2>Hi, <%= @user.name %></h2>
 
     <form class="" action="/tables" method="post">
-      <!-- <input type="hidden" name="table[user_id]" value="<%= @user.id %>"> -->
       <button type="submit" name="name" value="">Add Table</button>
     </form>
 
@@ -13,7 +12,7 @@
       <div class="col s12 m8 offset-m2 l6 offset-l3">
         <a class="black-text" href="/tables/<%= t.id %>">
         <div class="card">
-          <div class="card-content">
+          <div class="card-content hoverable">
             <h4>Table <%= t.id %></h4>
             <ul>
               <% customers.each do |c| %>
@@ -23,12 +22,6 @@
           </div>
         </div>
         </a>
-        <!-- Test Code -->
-        <form class="" action="/sessions/table" method="post">
-          <input type="hidden" name="table_id" value="<%= t.id %>">
-          <input type="submit" name="name" value="">
-        </form>
-        <!-- End of Test Code -->
       </div>
     </div>
     <% end %>

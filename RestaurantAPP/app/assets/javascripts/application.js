@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 //= require materialize.min
+$(function() {
+  setReceiptHandler();
+});
+
+function setReceiptHandler() {
+  $('#view-receipt').click(function() {
+    $('#modal-receipt').toggle();
+  });
+}

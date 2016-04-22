@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col s12 center">
-    <h2>Table <%= @table.id %></h2>
-    <h4><%= @session %></h4>
+    <h2>Table <span class="red-text text-darken-1"><%= @table.id %></span></h2>
     <!-- Test Code -->
 
     <%= form_tag  '/customers', method: :post do %>
@@ -10,10 +9,28 @@
     <% end %>
 
     <!-- End of Test Code -->
+
+    <button id="view-receipt" class="btn-large red darken-1" type="button" name="button">View Receipt</button>
+    <div id="modal-receipt">
+      <% @customers.each do |customer| %>
+        <h5 class="left-align white-text"><%= customer.name %></h5>
+        <% orders = Order.where customer_id: customer.id %>
+        <ul class="left-align">
+          <% orders.each do |order| %>
+            <li class="white-text"><%= order.item.name %> : $<%= order.item.price %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <h5 class="white-text">Total <%= @table_orders.length %> Item(s): <%= number_to_currency(@sub_total) %></h5>
+      <h5 class="white-text">Sales Tax: <%= number_to_currency(@tax_bill) %></h5>
+      <h4 class="white-text">Grand Total: <%=number_to_currency(@total_bill) %></h4>
+    </div>
+    <!-- <h2>$<%= @total_bill %></h2> -->
+
     <% @customers.each do |customer| %>
     <a class="black-text" href="/customers/<%= customer.id %>">
     <div class="card">
-      <div class="card-content">
+      <div class="card-content hoverable">
         <h4><%= customer.name %></h4>
       </div>
     </div>

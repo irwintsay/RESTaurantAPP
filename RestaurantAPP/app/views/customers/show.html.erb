@@ -1,14 +1,39 @@
 <div class="row">
   <div class="col s12 center">
-    <h2>Customer <%= @customer.name %></h2>
+    <h2>Customer: <%= @customer.name %></h2>
+
+    <h4>Current Orders</h4>
+    <% if @orders %>
+      <% @orders.each do |order| %>
+      <div class="card">
+        <div class="card-content">
+          <h4><%= order.item.name %> : $<%= order.item.price %></h4>
+
+          <%= form_tag "/orders/#{order.id}", method: :delete do %>
+            <%= hidden_field_tag :customer_id, order.customer.id %>
+            <%= button_tag "#{ order.item.name } : $#{ order.item.price }", class: 'red lighten-1 btn-large' %>
+          <% end %>
+
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+    <h4>Menu</h4>
     <% @items.each do |item| %>
-    <a class="black-text" href="/items/<%= item.id %>">
     <div class="card">
       <div class="card-content">
         <h4><%= item.name %> : $<%= item.price %></h4>
+
+        <%= form_tag '/orders', method: :post do %>
+          <%= hidden_field_tag :customer_id, @customer.id %>
+          <%= hidden_field_tag :item_id, item.id %>
+          <%= button_tag "#{ item.name } : $#{ item.price }", class: 'red lighten-1 btn-large' %>
+          <!-- <%= submit_tag 'Add Item' %> -->
+        <% end %>
+
       </div>
     </div>
-    </a>
     <% end %>
   </div>
 </div>

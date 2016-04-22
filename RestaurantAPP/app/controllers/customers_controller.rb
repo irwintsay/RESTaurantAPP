@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find params[:id]
     @items = Item.all
+    @orders = Order.where customer_id: @customer.id
   end
 
   private

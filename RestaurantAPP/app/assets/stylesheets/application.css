@@ -14,6 +14,12 @@
  *= require_self
  *= require materialize.min
  */
+@import url(https://fonts.googleapis.com/css?family=Sacramento);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 
 ul {
   list-style-type: none;
@@ -28,6 +34,42 @@ ul {
   display: inline;
 }
 
+.title {
+  font-family: 'Sacramento', cursive;
+  font-size: 6rem;
+}
+
+.title2 {
+  font-family: 'Sacramento', cursive;
+  font-size: 4rem;
+}
+
+.footer-stuff h5 {
+  display: inline;
+}
+
+.footer-stuff h6 {
+  display: inline;
+}
+
 #main {
   height: 100%;
 }
+
+#modal-receipt {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 5;
+  background-color: rgba(0,0,0,0.8);
+  padding: 100px;
+}
+
+/* label underline focus color NOT WORKING*/
+ .input-field input[type=password]:focus {
+   border-bottom: 1px solid rgb(229,57,53);
+   box-shadow: 0 1px 0 0 rgb(229,57,53);
+ }
