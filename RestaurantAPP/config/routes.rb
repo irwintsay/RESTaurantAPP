@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :tables
-  resources :customers
-  resources :orders
+  resources :customers, only: [:create, :show]
+  resources :orders, only: [:create, :destroy]
   resources :items
 
   # Custom routes
