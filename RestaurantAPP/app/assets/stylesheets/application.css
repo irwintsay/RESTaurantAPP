@@ -82,6 +82,11 @@ ul {
   z-index: 5;
   background-color: rgba(0,0,0,0.8);
   padding: 100px;
+  overflow-y: auto;
+}
+
+#modal-receipt ul {
+  margin-left: 20px;
 }
 
 /* label underline focus color*/

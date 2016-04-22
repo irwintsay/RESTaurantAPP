@@ -14,7 +14,7 @@
 
       <div class="col s4 m4 l4">
         <%= form_tag  '/customers', method: :post do %>
-          <%= hidden_field_tag :table_id, @table.id  %>
+          <%= hidden_field_tag :table_id, @table.id %>
           <%= button_tag 'Add Cust', class: 'red darken-1 btn-large nav-spacing' %>
         <% end %>
       </div>
@@ -35,6 +35,12 @@
       <h5 class="white-text">Total <%= @table_orders.length %> Item(s): <%= number_to_currency(@sub_total) %></h5>
       <h5 class="white-text">Sales Tax: <%= number_to_currency(@tax_bill) %></h5>
       <h4 class="white-text">Grand Total: <%=number_to_currency(@total_bill) %></h4>
+
+      <!-- Pay Bill -->
+      <%= form_tag '/customers', method: :put do %>
+        <%= hidden_field_tag :table_id, @table.id %>
+        <%= button_tag 'Pay Bill', class: 'red darken-1 btn-large' %>
+      <% end %>
     </div>
     <!-- End of Receipt MODAL -->
 

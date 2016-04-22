@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create', as: :create_session
   delete '/sessions' => 'sessions#destroy', as: :delete_session
 
+  put '/customers' => 'customers#update_all'
+
   post '/sessions/table' => 'sessions#createtable', as: :create_table_session
   delete '/sessions/table' => 'sessions#destroytable', as: :delete_table_session
 

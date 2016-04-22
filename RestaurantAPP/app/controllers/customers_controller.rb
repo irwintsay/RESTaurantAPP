@@ -15,6 +15,18 @@ class CustomersController < ApplicationController
     @orders = Order.where customer_id: @customer.id
   end
 
+  def update_all
+    table = Table.find customer_params[:table_id]
+    @customers = Customer.where table_id: table.id
+
+    @customers.each do |customer|
+      customer.update table_id: nil
+    end
+
+    table.update user_id: nil, occupied: false
+    redirect_to profile_path
+  end
+
   private
 
   def customer_params
